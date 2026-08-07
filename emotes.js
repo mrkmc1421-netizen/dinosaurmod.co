@@ -7,6 +7,17 @@ window.DinoEmotes = [
   { code: ":jurassic_pride:", src: "assets/emotes/jurassic_pride.png" },
   { code: ":meteor_hype:", src: "assets/emotes/meteor_hype.png" }
 ];
+  // More Emotes Here!!!
+  { code: ":dino_cry:", src: "assets/emotes/dino_cry.png" },
+  { code: ":dino_laugh:", src: "assets/emotes/dino_laugh.png" },
+  { code: ":dino_angry:", src: "assets/emotes/dino_angry.png" },
+  { code: ":dino_confused:", src: "assets/emotes/dino_confused.png" },
+  { code: ":dino_down:", src: "assets/emotes/dino_down.png" },
+  { code: ":dino_sleep:", src: "assets/emotes/dino_sleep.png" },
+  { code: ":dino_bruh:", src: "assets/emotes/dino_bruh.png" },
+  { code: ":dino_wtf:", src: "assets/emotes/dino_wtf.png" },
+  { code: ":dino_hype_overload:", src: "assets/emotes/dino_hype_overload.png" }
+];
 function renderDinoEmotes(text) {
   let output = text;
   DinoEmotes.forEach(emote => {
