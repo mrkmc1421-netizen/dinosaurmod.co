@@ -1,0 +1,37 @@
+<div id="dino-forums">
+  <h1 class="forum-title">🦖 DinosaurMod Forums — by DinosaurMod</h1>
+
+  <div id="forum-categories"></div>
+
+  <div id="forum-threads"></div>
+
+  <div id="forum-posts"></div>
+</div>
+const DinoForumCategories = [
+  { id: "general", name: "General Discussion" },
+  { id: "help", name: "Help & Questions" },
+  { id: "projects", name: "Project Showcases" },
+  { id: "trex", name: "T. Rex Zone" },
+  { id: "raptor", name: "Raptor Hangout" },
+  { id: "fossils", name: "Fossil Archives" }
+];
+const DinoThreads = {
+  general: [],
+  help: [],
+  projects: [],
+  trex: [],
+  raptor: [],
+  fossils: []
+};
+function renderForumCategories() {
+  const container = document.getElementById("forum-categories");
+  container.innerHTML = "";
+
+  DinoForumCategories.forEach(cat => {
+    const div = document.createElement("div");
+    div.className = "forum-category";
+    div.innerText = cat.name;
+    div.onclick = () => loadThreads(cat.id);
+    container.appendChild(div);
+  });
+}
