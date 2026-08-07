@@ -1,0 +1,16 @@
+.forum-category, .forum-thread {
+  padding: 10px;
+  background: #2b2b2b;
+  color: white;
+  margin: 6px 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.forum-post {
+  background: #3b3b3b;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  color: white;
+  }
