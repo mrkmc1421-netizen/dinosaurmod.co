@@ -1,0 +1,7 @@
+.dino-emote {
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  margin: 0 4px;
+  image-rendering: pixelated;
+}
