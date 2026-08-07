@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Fossil Editor</title>
+  <style>
+    body {
+      background: #1b1b1b;
+      color: #fff;
+      font-family: sans-serif;
+    }
+
+    #fossil-palette, #fossil-script {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 10px;
+      background: #2b2b2b;
+      min-height: 120px;
+    }
+
+    #fossil-palette {
+      width: 260px;
+      float: left;
+    }
+
+    #fossil-script {
+      margin-left: 290px;
+    }
+
+    .fossil-block {
+      padding: 8px 12px;
+      margin: 6px 0;
+      background: #4b3b2b;
+      border-radius: 8px;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .fossil-block.dragging {
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <h1>🦴 Fossil Editor</h1>
+
+  <div id="fossil-palette">
+    <div class="fossil-block" draggable="true">stomp (10) steps</div>
+    <div class="fossil-block" draggable="true">hide</div>
+    <div class="fossil-block" draggable="true">show</div>
+    <div class="fossil-block" draggable="true">play sound (roar v)</div>
+    <div class="fossil-block" draggable="true">stomp back (10) steps</div>
+    <div class="fossil-block" draggable="true">roar (10) times</div>
+  </div>
+  <div class="fossil-block" draggable="true">tail whip (5) degrees</div>
+<div class="fossil-block" draggable="true">dig fossil (3) layers</div>
+<div class="fossil-block" draggable="true">growl at volume (8)</div>
+<div class="fossil-block" draggable="true">charge forward (20) steps</div>
+<div class="fossil-block" draggable="true">sniff air for danger</div>
+<div class="fossil-block" draggable="true">shake ground (2) seconds</div>
+<div class="fossil-block" draggable="true">eat leaves (4) bites</div>
+<div class="fossil-block" draggable="true">scan area (360°)</div>
+<div class="fossil-block" draggable="true">jump + roar combo</div>
+<div class="fossil-block" draggable="true">enter sleep mode (10) seconds</div>
+
+  <div id="fossil-script">
+    <p>Drop blocks here to build your fossil script:</p>
+  </div>
+
+  <script>
+    const palette = document.getElementById("fossil-palette");
+    const scriptArea = document.getElementById("fossil-script");
+
+    let dragged = null;
+
+    function makeClone(block) {
+      const clone = block.cloneNode(true);
+      clone.addEventListener("dragstart", onDragStart);
+      clone.addEventListener("dragend", onDragEnd);
+      return clone;
+    }
+
+    function onDragStart(e) {
+      dragged = e.target;
+      e.target.classList.add("dragging");
+    }
+
+    function onDragEnd(e) {
+      e.target.classList.remove("dragging");
+      dragged = null;
+    }
+
+    document.querySelectorAll(".fossil-block").forEach(block => {
+      block.addEventListener("dragstart", onDragStart);
+      block.addEventListener("dragend", onDragEnd);
+    });
+
+    [palette, scriptArea].forEach(area => {
+      area.addEventListener("dragover", e => {
+        e.preventDefault();
+      });
+
+      area.addEventListener("drop", e => {
+        e.preventDefault();
+        if (!dragged) return;
+
+        if (area === scriptArea) {
+          // drop a clone into script
+          area.appendChild(makeClone(dragged));
+        }
+      });
+    });
+  </script>
+</body>
+</html>
